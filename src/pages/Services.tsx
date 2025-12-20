@@ -1,4 +1,5 @@
 // Services.tsx
+import { Link } from "react-router-dom";
 import Navbar from "../components/ui/shadcn-io/icon-button/nav";
 
 // Import your videos (include .mp4)
@@ -7,13 +8,22 @@ import video2 from "../assets/services/video2.mp4";
 import video3 from "../assets/services/video3.mp4";
 import video4 from "../assets/services/video4.mp4";
 
-const services = [
+type ServiceItem = {
+  title: string;
+  description: string;
+  videoSrc: string;
+  cta: string;
+  path: string;
+};
+
+const services: ServiceItem[] = [
   {
     title: "Software Development",
     description:
       "CloudNova provides tailor-made software development solutions designed to meet unique business needs. From enterprise applications to industry-specific platforms, our custom software enhances efficiency, scalability, and security. We deliver cutting-edge technology that streamlines processes, integrates seamlessly, and empowers businesses to achieve long-term digital transformation and competitive advantage.",
     videoSrc: video1,
     cta: "Learn More",
+    path: "/services/software-development",
   },
   {
     title: "Web / eCommerce Design & Development",
@@ -21,6 +31,7 @@ const services = [
       "At CloudNova, we specialize in professional web design and development that blends creativity with functionality. Our responsive, SEO-friendly websites are built to engage audiences.",
     videoSrc: video2,
     cta: "Learn More",
+    path: "/services/web-development",
   },
   {
     title: "Creative Graphic Design & Branding",
@@ -28,6 +39,9 @@ const services = [
       "Our creative team brings your brand to life with high-impact visual storytelling. From professional social media posts and digital banners to high-quality flyers and marketing collateral, we design assets that capture attention and drive engagement across all digital and print platforms.",
     videoSrc: video3,
     cta: "Learn More",
+    // If you want this to go to DigitalMarketing.tsx (per your folder),
+    // keep this path and map it to that component in App.tsx.
+    path: "/services/digital-marketing",
   },
   {
     title: "SaaS & Cloud-Based Solutions",
@@ -35,6 +49,7 @@ const services = [
       "Transform your business with CloudNova’s SaaS and cloud-based solutions. We design scalable, secure, and flexible cloud applications that improve collaboration and reduce infrastructure costs. From CRM platforms to enterprise cloud services, our solutions ensure seamless accessibility, data security, and high performance, enabling businesses to scale faster in digital markets.",
     videoSrc: video4,
     cta: "Learn More",
+    path: "/services/saas-cloud-solutions",
   },
 ];
 
@@ -44,7 +59,7 @@ const Services = () => {
       {/* Navbar */}
       <Navbar active="Our Services" />
 
-      {/* Hero (same style as other containers) */}
+      {/* Hero */}
       <section className="pt-32 pb-14 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white/70 backdrop-blur shadow-[0_10px_30px_rgba(15,23,42,0.05)]">
@@ -66,7 +81,7 @@ const Services = () => {
       <section className="max-w-7xl mx-auto px-6 pb-28 space-y-16 md:space-y-24">
         {services.map((service, index) => (
           <div
-            key={index}
+            key={service.path}
             className="relative rounded-3xl border border-slate-200/70 bg-white/70 backdrop-blur shadow-[0_10px_30px_rgba(15,23,42,0.05)] overflow-hidden"
           >
             <div
@@ -76,7 +91,7 @@ const Services = () => {
             >
               {/* Text */}
               <div className="flex-1 space-y-6">
-                <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
+                <h2 className="text-3xl md:text-5xl font-semibold text-slate-900 leading-tight tracking-tight">
                   {service.title}
                 </h2>
 
@@ -84,8 +99,9 @@ const Services = () => {
                   {service.description}
                 </p>
 
-                {/* Button (no motion) */}
-                <button
+                {/* Link Button */}
+                <Link
+                  to={service.path}
                   className="
                     inline-flex items-center gap-3 px-8 py-4
                     bg-orange-600 text-white rounded-full font-bold text-lg
@@ -104,10 +120,10 @@ const Services = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
                   </svg>
-                </button>
+                </Link>
               </div>
 
               {/* Video */}
