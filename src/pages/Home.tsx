@@ -54,7 +54,7 @@ const Home: React.FC = () => {
 
 
 // Brand color used elsewhere (Threads): rgb(153,0,0)
-const BRAND = "rgb(153,0,0)";
+const BRAND = "rgb(254,64,54)";
 
 const techLogosRow1 = [
   { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt: "React", href: "https://react.dev" },
@@ -254,10 +254,10 @@ const approachSteps = [
             <div className="mb-5 sm:mb-6">
               <div
                 className="inline-flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white"
-                style={{ border: "2px solid rgb(153,0,0)" }}
+                style={{ border: "2px solid rgb(254,64,54)" }}
               >
-                <Icon size={20} className="sm:hidden" style={{ color: "rgb(153,0,0)" }} />
-                <Icon size={22} className="hidden sm:block" style={{ color: "rgb(153,0,0)" }} />
+                <Icon size={20} className="sm:hidden" style={{ color: "rgb(254,64,54)" }} />
+                <Icon size={22} className="hidden sm:block" style={{ color: "rgb(254,64,54)" }} />
               </div>
             </div>
 
@@ -365,8 +365,8 @@ const approachSteps = [
               "hover:-translate-y-1 hover:shadow-xl",
             ].join(" ")}
             style={{
-              borderColor: "rgba(153,0,0,0.30)",
-              backgroundColor: tinted ? "rgba(153,0,0,0.04)" : "#ffffff",
+              borderColor: "rgba(254,64,54,0,0.30)",
+              backgroundColor: tinted ? "rgba(254,64,54,0.04)" : "#ffffff",
             }}
           >
             {/* soft glow on hover */}
@@ -374,7 +374,7 @@ const approachSteps = [
               className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100"
               style={{
                 background:
-                  "radial-gradient(700px circle at 20% 10%, rgba(153,0,0,0.10), transparent 55%)",
+                  "radial-gradient(700px circle at 20% 10%, rgba(254,64,54,0.10), transparent 55%)",
               }}
             />
 
@@ -412,7 +412,7 @@ const approachSteps = [
         className="lg:col-span-8 rounded-[32px] p-3 sm:p-6 border text-left"
         style={{
           backgroundColor: "rgba(0,0,0,0.0)",
-          borderColor: "rgba(153,0,0,0.18)",
+          borderColor: "rgba(254,64,54,0.18)",
         }}
       >
         <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight">
