@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import  { useMemo, useState } from "react";
 
 type NavItem = { label: string; href: string };
 
@@ -76,7 +76,7 @@ export default function Navbar({
                       <a
                         href={it.href}
                         className={[
-                          "text-sm font-medium transition-colors",
+                          "text-md font-medium transition-colors",
                           activeLink
                             ? "text-orange-600"
                             : "text-slate-900 hover:text-orange-600",
@@ -104,8 +104,8 @@ export default function Navbar({
                   href={ctaHref}
                   className="
                     hidden items-center gap-2 rounded-full
-                    bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white
-                    shadow-sm transition hover:bg-orange-700
+                    bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white hover:text-white
+                    shadow-sm transition hover:bg-orange-500
                     md:flex
                   "
                 >
@@ -116,7 +116,7 @@ export default function Navbar({
                 {/* Mobile menu button */}
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center rounded-full p-2 text-slate-900 hover:bg-white/10 md:hidden"
+                  className="inline-flex items-center justify-center rounded-full p-2 text-slate-900 hover:bg-white md:hidden"
                   aria-label="Open menu"
                   onClick={() => setOpen((v) => !v)}
                 >

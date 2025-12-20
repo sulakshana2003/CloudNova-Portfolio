@@ -1,15 +1,15 @@
-import './App.css'
-import Navbar from "./components/ui/shadcn-io/icon-button/nav.tsx";
+import "./App.css";
+import Projects from "./pages/projects.tsx";
 
 
-function App() {
-  
 
-  return (
-    <>
-      <Navbar active="Home" />
-        </>
-  )
+export default function App() {
+
+    return(
+        <Projects />
+    )
+
+
+
+
 }
-
-export default App
