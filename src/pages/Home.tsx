@@ -4,6 +4,9 @@ import Navbar from "../components/ui/shadcn-io/icon-button/nav";
 import CloudNovaText from "../assets/logo.png";
 import { FiCode, FiGlobe, FiPenTool, FiCloud } from "react-icons/fi";
 import LogoLoop from "../components/LogoLoop";
+import { Search, ClipboardList, Palette, Code2, Rocket, LifeBuoy } from "lucide-react";
+import AboutImg from '../assets/aboutus.jpg';
+import Footer from "../components/Footer";
 
 
 
@@ -47,6 +50,9 @@ const Home: React.FC = () => {
   []
 );
 
+
+
+
 // Brand color used elsewhere (Threads): rgb(153,0,0)
 const BRAND = "rgb(153,0,0)";
 
@@ -68,6 +74,38 @@ const techLogosRow2 = [
   { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", alt: "GitHub", href: "https://github.com" },
 ];
 
+const approachSteps = [
+  {
+    title: "Discover",
+    desc: "We begin by understanding your business needs, challenges, and opportunities through in-depth discussions and requirement analysis.",
+    Icon: Search,
+  },
+  {
+    title: "Plan",
+    desc: "Our experts create a clear roadmap, outlining strategies, timelines, and resources to ensure smooth project execution.",
+    Icon: ClipboardList,
+  },
+  {
+    title: "Design",
+    desc: "We craft user-focused designs that balance functionality, aesthetics, and intuitive experiences to meet your business goals.",
+    Icon: Palette,
+  },
+  {
+    title: "Develop",
+    desc: "Our team builds secure, scalable, and future-ready solutions using modern technologies tailored to your business requirements.",
+    Icon: Code2,
+  },
+  {
+    title: "Implement",
+    desc: "We ensure seamless deployment, integration, and testing so your solution runs efficiently from day one.",
+    Icon: Rocket,
+  },
+  {
+    title: "Support & Evolve",
+    desc: "With ongoing support, updates, and improvements, we help your business stay ahead in a fast-changing digital world.",
+    Icon: LifeBuoy,
+  },
+];
 
 
 
@@ -102,6 +140,7 @@ const techLogosRow2 = [
   }, []);
 
   return (
+
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Threads background: always full viewport */}
       {renderThreads && (
@@ -124,12 +163,12 @@ const techLogosRow2 = [
       )}
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full flex-1 flex flex-col">
         <Navbar active="Home" />
 
         <main>
           {/* HERO */}
-          <section className="relative min-h-screen flex items-center">
+          <section className="relative min-h-screen  flex items-center">
             <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16">
               <div className="ax-w-3xl text-center mx-auto">
                 <h1 className="flex justify-center">
@@ -175,13 +214,12 @@ const techLogosRow2 = [
     <h2 className="text-4xl font-semibold text-gray-900">Our Services</h2>
 
     <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-      We follow a clear approach, guiding businesses from idea to execution
-      with smart, reliable, and future-ready digital solutions.
+      At CloudNova, we don’t just build digital products — we build solutions that solve real business problems. Every project is planned with performance, security, and future growth in mind, so your website, software, or cloud platform stays reliable as your business scales.
     </p>
   </div>
 
 
-    <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
   {services.map((service) => {
     const Icon = service.icon;
 
@@ -190,59 +228,58 @@ const techLogosRow2 = [
         key={service.title}
         className={[
           "group relative overflow-hidden rounded-[28px] border bg-white",
-          "p-8 shadow-sm",
+          // responsive padding
+          "p-6 sm:p-7 lg:p-8",
+          "shadow-sm",
+          // smoother hover
           "transition-all duration-700 ease-out",
-          "hover:-translate-y-1.5 hover:shadow-xl",
+          "hover:-translate-y-1 hover:shadow-xl",
         ].join(" ")}
         style={{ borderColor: "rgba(153,0,0,0.22)" }}
       >
-        {/* smooth hover glow */}
+        {/* glow */}
         <div
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100"
           style={{
             background:
-              "radial-gradient(800px circle at 20% 10%, rgba(153,0,0,0.10), transparent 55%)",
+              "radial-gradient(700px circle at 20% 10%, rgba(153,0,0,0.10), transparent 55%)",
           }}
         />
 
-        {/* CONTENT: justify-between makes it "justified" vertically */}
-        <div className="relative h-full min-h-[240px] flex flex-col justify-between">
-          {/* Top */}
+        {/* CONTENT */}
+        <div className="relative flex h-full flex-col">
+          {/* top */}
           <div>
-            {/* Icon badge (outline) */}
-            <div className="mb-6">
+            {/* icon badge */}
+            <div className="mb-5 sm:mb-6">
               <div
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white"
+                className="inline-flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white"
                 style={{ border: "2px solid rgb(153,0,0)" }}
               >
-                <Icon size={22} style={{ color: "rgb(153,0,0)" }} />
+                <Icon size={20} className="sm:hidden" style={{ color: "rgb(153,0,0)" }} />
+                <Icon size={22} className="hidden sm:block" style={{ color: "rgb(153,0,0)" }} />
               </div>
             </div>
 
-            {/* Title (black, not bold) */}
-            <h3 className="text-2xl font-medium text-black">
+            {/* title */}
+            <h3 className="text-xl sm:text-2xl font-medium text-black">
               {service.title}
             </h3>
 
-            <p className="mt-4 text-gray-700 leading-relaxed">
+            {/* description */}
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 leading-relaxed">
               {service.description}
             </p>
           </div>
 
-          {/* Bottom (optional: add button/link later)
-          <a
-            href="#contact"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold"
-            style={{ color: "rgb(153,0,0)" }}
-          >
-            Learn More <span className="transition-transform duration-700 ease-out group-hover:translate-x-1.5">→</span>
-          </a>
-          */}
+          {/* bottom space (keeps cards aligned nicely even if text differs) */}
+          <div className="mt-6" />
         </div>
       </div>
     );
   })}
 </div>
+
 
   </div>
 </section>
@@ -297,51 +334,143 @@ const techLogosRow2 = [
   </div>
 </section>
 
+
+
+
+<section id="approach" className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header like screenshot: left title + right description on large screens */}
+    <div className="flex flex-col items-center text-center">
+    <h2 className="text-4xl font-semibold text-gray-900">Our Approach</h2>
+
+    <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+      We follow a clear six-step approach, guiding businesses from idea to execution
+      with smart, reliable, and future-ready digital solutions.
+    </p>
+  </div>
+
+
+    {/* Cards */}
+    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {approachSteps.map(({ title, desc, Icon }, idx) => {
+        const tinted = idx % 2 === 1;
+
+        return (
+          <div
+            key={title}
+            className={[
+              "group relative overflow-hidden rounded-[28px] border",
+              "p-7 sm:p-8 bg-white",
+              "shadow-sm transition-all duration-700 ease-out",
+              "hover:-translate-y-1 hover:shadow-xl",
+            ].join(" ")}
+            style={{
+              borderColor: "rgba(153,0,0,0.30)",
+              backgroundColor: tinted ? "rgba(153,0,0,0.04)" : "#ffffff",
+            }}
+          >
+            {/* soft glow on hover */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100"
+              style={{
+                background:
+                  "radial-gradient(700px circle at 20% 10%, rgba(153,0,0,0.10), transparent 55%)",
+              }}
+            />
+
+            {/* icon badge (replaces number) */}
+            <div className="relative mb-6">
+              <div
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white"
+                style={{ border: `2px solid ${BRAND}` }}
+              >
+                <Icon size={22} style={{ color: BRAND }} />
+              </div>
+            </div>
+
+            <h3 className="relative text-2xl font-medium text-black">{title}</h3>
+
+            <p className="relative mt-4 text-gray-700 leading-relaxed">
+              {desc}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
   
 
 
-          {/* CONTACT (full width background, centered card) */}
-          <section id="contact" className="bg-gray-50 py-16">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="rounded-2xl bg-white border border-gray-200 p-8 shadow-sm">
-                <h2 className="text-2xl font-bold text-gray-900">
-                  Get in touch
-                </h2>
-                <p className="mt-2 text-gray-600">
-                  Tell us what you need — we’ll recommend the best solution.
-                </p>
+          {/* About us (full width background, centered card) */}
+          <section id="about" className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      {/* LEFT: About card */}
+      <div
+        className="lg:col-span-8 rounded-[32px] p-3 sm:p-6 border text-left"
+        style={{
+          backgroundColor: "rgba(0,0,0,0.0)",
+          borderColor: "rgba(153,0,0,0.18)",
+        }}
+      >
+        <h2 className="text-3xl sm:text-4xl font-semibold text-black leading-tight">
+          We build great digital products <br className="hidden sm:block" />
+          and cloud solutions.
+        </h2>
 
-                <div className="mt-6 grid sm:grid-cols-2 gap-6 text-gray-800">
-                  <div className="rounded-xl border border-gray-200 p-5">
-                    <div className="font-semibold text-gray-900">
-                      Sulakshana
-                    </div>
-                    <div className="mt-1">+94 70 312 1957</div>
-                  </div>
-                  <div className="rounded-xl border border-gray-200 p-5">
-                    <div className="font-semibold text-gray-900">Jeevesh</div>
-                    <div className="mt-1">+94 75 381 2801</div>
-                  </div>
-                </div>
+        <p className="mt-6 text-gray-700 leading-relaxed max-w-3xl">
+          CloudNova specializes in building modern web platforms, custom software,
+          and scalable cloud-based solutions that help businesses grow. From idea
+          to launch, we focus on clean design, secure development, and smooth
+          deployment — so you can streamline operations, improve efficiency, and
+          scale with confidence.
+        </p>
 
-                <div className="mt-6 rounded-xl border border-gray-200 p-5">
-                  <div className="font-semibold text-gray-900">Email</div>
-                  <div className="mt-1">cloudnova.team@gmail.com</div>
-                </div>
-              </div>
-            </div>
-          </section>
+        <div className="mt-8">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white
+                       transition-all duration-700 ease-out hover:shadow-lg hover:-translate-y-0.5"
+            style={{ backgroundColor: BRAND }}
+          >
+            About Us
+            <span className="transition-transform duration-700 ease-out group-hover:translate-x-1">
+              →
+            </span>
+          </a>
+        </div>
+      </div>
 
-          {/* FOOTER */}
-          <footer className="py-10 bg-white border-t border-gray-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-500 flex flex-wrap gap-3 justify-between">
-              <span>© {new Date().getFullYear()} CloudNova</span>
-              <span>cloudnova.team@gmail.com</span>
-            </div>
-          </footer>
-        </main>
+      {/* RIGHT: Image card */}
+      <div className="lg:col-span-4">
+        <div className="rounded-[28px] overflow-hidden shadow-sm border border-gray-200">
+          <img
+            src={AboutImg}
+            alt="About CloudNova"
+            className="w-full h-[320px] sm:h-[360px] lg:h-[420px] object-cover"
+            draggable={false}
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+          {/* FOOTER */}
+          
+          
+          
+          
+        </main>
+        <Footer/>
+      </div>
+    </div>
+    
+
   );
 };
 
