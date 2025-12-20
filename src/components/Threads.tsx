@@ -135,7 +135,7 @@ const Threads: React.FC<ThreadsProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const animationFrameId = useRef<number | null>(null);
-  
+
   useEffect(() => {
     if (!containerRef.current) return;
     const container = containerRef.current;
@@ -188,8 +188,9 @@ const Threads: React.FC<ThreadsProps> = ({
       targetMouse = [0.5, 0.5];
     }
     if (enableMouseInteraction) {
-      container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('mouseleave', handleMouseLeave);
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('blur', handleMouseLeave);
+
     }
 
     function update(t: number) {
@@ -215,8 +216,9 @@ const Threads: React.FC<ThreadsProps> = ({
       window.removeEventListener('resize', resize);
 
       if (enableMouseInteraction) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('mouseleave', handleMouseLeave);
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('blur', handleMouseLeave);
+
       }
       if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();

@@ -28,7 +28,7 @@ export default function Navbar({
         { label: "About Us", href: "#about" },
         { label: "Our Services", href: "#services" },
         { label: "Blog", href: "#blog" },
-        { label: "Careers", href: "#careers" },
+        { label: "Projects", href: "#careers" },
       ],
     [items]
   );
