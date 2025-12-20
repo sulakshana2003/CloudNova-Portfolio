@@ -7,7 +7,7 @@ const BRAND = "rgb(153,0,0)";
 const Footer: React.FC = () => {
   return (
     // ✅ Full-width background
-    <footer className="w-full mt-16 " style={{ backgroundColor: "rgba(0,0,0,0.0)" }}>
+    <footer className="w-full mt-16 " style={{ backgroundColor: "rgba(153,0,0,0.06)" }}>
       {/* ✅ Centered content only */}
       <div className="max-w-7xl mx-auto px-4 sm:px-20 lg:px-8">
         {/* TOP CTA */}
