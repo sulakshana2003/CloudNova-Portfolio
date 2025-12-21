@@ -7,6 +7,8 @@ import SoftwareDevelopment from './pages/servicesDet/SoftwareDevelopment.tsx';
 import WebDevelopment from './pages/servicesDet/WebDevelopment.tsx';
 import DigitalMarketing from './pages/servicesDet/DigitalMarketing.tsx';
 import SaaSCloudSolutions from './pages/servicesDet/SaaSCloudSolutions.tsx';
+import BlogPage from './pages/Blog.tsx';
+import AboutUs from './pages/AboutUs.tsx';
 
 
 
@@ -19,6 +21,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/blog" element={<BlogPage />} />
+             <Route path="/about" element={<AboutUs />} />
 
 
 

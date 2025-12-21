@@ -5,6 +5,7 @@ import video1 from "../assets/services/video1.mp4";
 import video2 from "../assets/services/video2.mp4";
 import video3 from "../assets/services/video3.mp4";
 import video4 from "../assets/services/video4.mp4";
+import Footer from "../components/Footer";
 
 type ServiceItem = {
   title: string;
@@ -145,6 +146,8 @@ const Services = () => {
           </div>
         ))}
       </section>
+      
+      <Footer />
     </div>
   );
 };

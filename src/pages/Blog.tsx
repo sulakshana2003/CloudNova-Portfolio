@@ -48,7 +48,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 text-center">
             <h2 className="text-sm font-bold uppercase tracking-[0.2em]" style={{ color: BRAND_RED }}>Our Blog</h2>
-            <h1 className="mt-4 text-5xl md:text-6xl font-black tracking-tighter text-slate-900">
+            <h1 className="mt-4 text-5xl md:text-6xl font-semibold font-black tracking-tighter text-slate-900">
               Latest Stories & <span style={{ color: BRAND_RED }}>Insights.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 leading-relaxed">
@@ -62,15 +62,15 @@ export default function BlogPage() {
                 key={post.id}
                 className="group relative flex flex-col overflow-hidden rounded-[32px] border border-white bg-white/70 backdrop-blur-xl transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/10"
               >
-                <div className="relative h-64 w-full overflow-hidden">
+                <div className="relative h-64 w-full overflow-hidden font-semibold">
                   <img
                     src={post.image}
                     alt={post.title}
                     className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t font-semibold from-slate-900/40 to-transparent" />
                   <span 
-                    className="absolute bottom-5 left-5 rounded-full px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-md border border-white/20"
+                    className="absolute bottom-5 left-5 rounded-full px-4 py-1 text-[10px] font-semibold uppercase tracking-widest text-white backdrop-blur-md border border-white/20"
                     style={{ backgroundColor: BRAND_RED }}
                   >
                     {post.category}
@@ -84,7 +84,7 @@ export default function BlogPage() {
                     <span>{post.author}</span>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-slate-900 group-hover:text-red-600 transition-colors leading-tight">
+                  <h3 className="text-2xl font-semibold text-slate-900 group-hover:text-red-600 transition-colors leading-tight">
                     {post.title}
                   </h3>
                   
@@ -115,7 +115,7 @@ export default function BlogPage() {
                 className="absolute top-0 right-0 h-full w-full opacity-20" 
                 style={{ background: `radial-gradient(circle at top right, ${BRAND_RED}, transparent)` }} 
             />
-            <h2 className="relative text-4xl font-bold text-white sm:text-5xl tracking-tight">
+            <h2 className="relative text-4xl font-semibold text-white sm:text-5xl tracking-tight">
                 Join our <span style={{ color: BRAND_RED }}>inner circle.</span>
             </h2>
             <p className="relative mt-6 text-slate-400 max-w-xl mx-auto text-lg">
@@ -128,7 +128,7 @@ export default function BlogPage() {
                 className="w-full max-w-xs rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-white placeholder-slate-500 backdrop-blur-lg focus:outline-none focus:ring-2 focus:ring-red-500 sm:w-96 transition-all"
               />
               <button 
-                className="w-full sm:w-auto rounded-2xl px-10 py-4 font-bold text-white transition-transform hover:scale-105 active:scale-95 shadow-xl shadow-red-500/20"
+                className="w-full sm:w-auto rounded-2xl px-10 py-4 font-semibold text-white transition-transform hover:scale-105 active:scale-95 shadow-xl shadow-red-500/20"
                 style={{ backgroundColor: BRAND_RED }}
               >
                 Subscribe Now
