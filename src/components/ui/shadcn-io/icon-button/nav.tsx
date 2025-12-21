@@ -26,7 +26,7 @@ export default function Navbar({
       items ?? [
         { label: "Home", href: "/" },
         { label: "About Us", href: "#about" },
-        { label: "Our Services", href: "#services" },
+        { label: "Our Services", href: "/services" },
         { label: "Blog", href: "#blog" },
         { label: "Projects", href: "/projects" },
       ],
