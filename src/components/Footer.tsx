@@ -1,13 +1,13 @@
 import React from "react";
-import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import CloudNovaText from "../assets/logo.png";
 
-const BRAND = "rgb(153,0,0)";
+const BRAND = "rgb(254,64,54)";
 
 const Footer: React.FC = () => {
   return (
     // ✅ Full-width background
-    <footer className="w-full mt-16 " style={{ backgroundColor: "rgba(153,0,0,0.06)" }}>
+    <footer className="w-full mt-16 " style={{ backgroundColor: "rgba(254,64,54,0.06)" }}>
       {/* ✅ Centered content only */}
       <div className="max-w-7xl mx-auto px-4 sm:px-20 lg:px-8">
         {/* TOP CTA */}
@@ -18,18 +18,18 @@ const Footer: React.FC = () => {
           </h3>
 
           <div className="lg:text-right">
-            <p className="text-lg font-semibold" style={{ color: BRAND }}>
+            {/* <p className="text-lg font-semibold" style={{ color: BRAND }}>
               Let’s build together.
-            </p>
+            </p> */}
 
-            <a
+            {/* <a
               href="#contact"
               className="mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white
                          transition-all duration-700 ease-out hover:-translate-y-0.5 hover:shadow-lg"
               style={{ backgroundColor: BRAND }}
             >
               Book a free consultation <ArrowRight size={18} />
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
                 rel="noreferrer"
                 className="h-10 w-10 rounded-full flex items-center justify-center border bg-white
                            transition-all duration-700 ease-out hover:-translate-y-0.5 hover:shadow-md"
-                style={{ borderColor: "rgba(153,0,0,0.25)" }}
+                style={{ borderColor: "rgba(254,64,54,0.25)" }}
                 aria-label="Facebook"
               >
                 <span className="text-lg font-bold" style={{ color: BRAND }}>
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
                 rel="noreferrer"
                 className="h-10 w-10 rounded-full flex items-center justify-center border bg-white
                            transition-all duration-700 ease-out hover:-translate-y-0.5 hover:shadow-md"
-                style={{ borderColor: "rgba(153,0,0,0.25)" }}
+                style={{ borderColor: "rgba(254,64,54,0.25)" }}
                 aria-label="LinkedIn"
               >
                 <span className="text-sm font-bold" style={{ color: BRAND }}>

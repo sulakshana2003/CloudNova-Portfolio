@@ -1,22 +1,23 @@
 import { useMemo, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router";
 
 type NavItem = { label: string; href: string };
 
 type NavbarProps = {
   /** Path/URL to your logo image (e.g. "/logo.png") */
   logoSrc?: string;
-  /** Used to highlight the active link (match by label or href) */
   active?: string;
-  /** Override nav items if you want */
   items?: NavItem[];
-  /** CTA button */
   ctaLabel?: string;
   ctaHref?: string;
 };
 
+const isHash = (href: string) => href.startsWith("#");
+const toFromHref = (href: string) => (isHash(href) ? `/${href}` : href); // "#about" -> "/#about"
+
 export default function Navbar({
   logoSrc = "/logo.png",
-  active = "Home",
+  active,
   items,
   ctaLabel = "Contact Us",
   ctaHref = "#contact",
@@ -24,20 +25,68 @@ export default function Navbar({
   const navItems = useMemo<NavItem[]>(
     () =>
       items ?? [
-        { label: "Home", href: "#home" },
-        { label: "About Us", href: "#about" },
-        { label: "Our Services", href: "#services" },
-        { label: "Blog", href: "#blog" },
-        { label: "Projects", href: "#careers" },
+        { label: "Home", href: "/" },
+        { label: "About Us", href: "/about" },
+        { label: "Our Services", href: "/services" },
+        { label: "Blog", href: "/blog" },
+        { label: "Projects", href: "/projects" },
       ],
     [items]
   );
 
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-  const isActive = (it: NavItem) =>
-    active.toLowerCase() === it.label.toLowerCase() ||
-    active.toLowerCase() === it.href.toLowerCase();
+  const NAV_OFFSET = 96; // adjust if needed (height of fixed navbar area)
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
+  const scrollToHash = (hash: string) => {
+    const id = hash.replace("#", "");
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const handleSameLinkScroll = (e: React.MouseEvent, href: string) => {
+    setOpen(false);
+
+    // Hash link (/#about style)
+    if (isHash(href)) {
+      // If you're already on that same hash, React Router won't change URL → manually scroll
+      if (location.pathname === "/" && location.hash === href) {
+        e.preventDefault();
+        scrollToHash(href);
+      }
+      return;
+    }
+
+    // Route link (/, /projects etc)
+    // If you're already on that same route, manually scroll to top
+    if (location.pathname === href && !location.hash) {
+      e.preventDefault();
+      scrollToTop();
+    }
+  };
+
+  const isActiveItem = (it: NavItem) => {
+    if (active && active.trim()) {
+      const a = active.toLowerCase();
+      return a === it.label.toLowerCase() || a === it.href.toLowerCase();
+    }
+
+    if (it.href === "/") return location.pathname === "/" && !location.hash;
+    if (isHash(it.href)) return location.pathname === "/" && location.hash === it.href;
+    return location.pathname === it.href;
+  };
+
+  const linkBase = "text-md font-medium transition-colors";
+  const activeCls = "text-orange-600";
+  const inactiveCls = "text-slate-900 hover:text-orange-600";
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -53,39 +102,51 @@ export default function Navbar({
               shadow-[0_18px_50px_rgba(0,0,0,0.18)]
             "
           >
-          
             <span className="pointer-events-none absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/25 to-white/5" />
 
-           
             <div className="relative flex w-full items-center justify-between">
-             
-              <a href="#home" className="flex items-center gap-3">
+              {/* Logo */}
+              <Link
+                to="/"
+                className="flex items-center gap-3"
+                onClick={(e) => handleSameLinkScroll(e, "/")}
+              >
                 <img
                   src={logoSrc}
                   alt="Logo"
                   className="h-10 w-auto select-none"
                   draggable={false}
                 />
-              </a>
+              </Link>
 
+              {/* Desktop nav */}
               <ul className="hidden items-center gap-7 md:flex">
                 {navItems.map((it) => {
-                  const activeLink = isActive(it);
+                  const activeLink = isActiveItem(it);
+
                   return (
                     <li key={it.label} className="relative">
-                      <a
-                        href={it.href}
-                        className={[
-                          "text-sm font-medium transition-colors",
-                          activeLink
-                            ? "text-orange-600"
-                            : "text-slate-900 hover:text-orange-600",
-                        ].join(" ")}
-                      >
-                        {it.label}
-                      </a>
+                      {isHash(it.href) ? (
+                        <Link
+                          to={toFromHref(it.href)}
+                          onClick={(e) => handleSameLinkScroll(e, it.href)}
+                          className={[linkBase, activeLink ? activeCls : inactiveCls].join(" ")}
+                        >
+                          {it.label}
+                        </Link>
+                      ) : (
+                        <NavLink
+                          to={it.href}
+                          onClick={(e) => handleSameLinkScroll(e, it.href)}
+                          className={({ isActive }) =>
+                            [linkBase, isActive ? activeCls : inactiveCls].join(" ")
+                          }
+                          end={it.href === "/"}
+                        >
+                          {it.label}
+                        </NavLink>
+                      )}
 
-                      {/* Active underline */}
                       <span
                         className={[
                           "pointer-events-none absolute -bottom-3 left-0 h-[2px] w-full rounded-full transition-opacity",
@@ -98,25 +159,27 @@ export default function Navbar({
                 })}
               </ul>
 
-              {/* Right side (CTA + mobile button) */}
+              {/* Right side */}
               <div className="flex items-center gap-2">
-                <a
-                  href={ctaHref}
+                {/* CTA */}
+                <Link
+                  to={toFromHref(ctaHref)}
+                  onClick={(e) => handleSameLinkScroll(e, ctaHref)}
                   className="
                     hidden items-center gap-2 rounded-full
-                    bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white
-                    shadow-sm transition hover:bg-orange-700
+                    bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white hover:text-white
+                    shadow-sm transition hover:bg-orange-500
                     md:flex
                   "
                 >
                   {ctaLabel}
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
 
                 {/* Mobile menu button */}
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center rounded-full p-2 text-slate-900 hover:bg-white/10 md:hidden"
+                  className="inline-flex items-center justify-center rounded-full p-2 text-slate-900 hover:bg-white md:hidden"
                   aria-label="Open menu"
                   onClick={() => setOpen((v) => !v)}
                 >
@@ -127,15 +190,16 @@ export default function Navbar({
 
             {/* Mobile dropdown */}
             {open && (
-              <div className="absolute left-3 right-3 top-[calc(100%+10px)] rounded-2xl bg-white/15 p-3 backdrop-blur-xl backdrop-saturate-150 shadow-[0_18px_50px_rgba(0,0,0,0.18)] ring-1 ring-white/20 md:hidden">
+              <div className="absolute left-3 right-3 top-[calc(100%+10px)] rounded-2xl bg-white p-3 backdrop-blur-xl backdrop-saturate-150 shadow-[0_18px_50px_rgba(0,0,0,0.18)] ring-1 ring-white/20 md:hidden">
                 <ul className="flex flex-col">
                   {navItems.map((it) => {
-                    const activeLink = isActive(it);
+                    const activeLink = isActiveItem(it);
+
                     return (
                       <li key={it.label}>
-                        <a
-                          href={it.href}
-                          onClick={() => setOpen(false)}
+                        <Link
+                          to={toFromHref(it.href)}
+                          onClick={(e) => handleSameLinkScroll(e, it.href)}
                           className={[
                             "flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-medium",
                             activeLink
@@ -144,30 +208,27 @@ export default function Navbar({
                           ].join(" ")}
                         >
                           {it.label}
-                          {activeLink && (
-                            <span className="h-2 w-2 rounded-full bg-orange-500" />
-                          )}
-                        </a>
+                          {activeLink && <span className="h-2 w-2 rounded-full bg-orange-500" />}
+                        </Link>
                       </li>
                     );
                   })}
                 </ul>
 
-                <a
-                  href={ctaHref}
-                  onClick={() => setOpen(false)}
+                <Link
+                  to={toFromHref(ctaHref)}
+                  onClick={(e) => handleSameLinkScroll(e, ctaHref)}
                   className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 py-3 text-sm font-semibold text-white hover:bg-orange-700"
                 >
                   {ctaLabel}
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </div>
             )}
           </nav>
         </div>
       </div>
 
-      {/* space so content doesn't hide behind fixed navbar */}
       <div className="h-20 md:h-24" />
     </header>
   );
