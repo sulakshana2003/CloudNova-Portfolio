@@ -24,7 +24,7 @@ const ThreadsBackground: React.FC<Props> = ({ renderThreads, showThreads }) => {
             maxFps={30}
             pauseOnScroll={false}
             scrollResumeDelayMs={140}
-            color={[255, 0, 0]}
+            color={[255,0,0]}
             amplitude={3}
             distance={0}
             enableMouseInteraction={false}

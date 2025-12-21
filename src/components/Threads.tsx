@@ -373,17 +373,19 @@ const Threads: React.FC<ThreadsProps> = ({
 
   // Update uniforms when props change (no WebGL re-init)
   useEffect(() => {
-    const program = programRef.current;
-    const renderer = rendererRef.current;
-    if (!program || !renderer) return;
+  const program = programRef.current;
+  const renderer = rendererRef.current;
+  if (!program || !renderer) return;
 
-    const [r, g, b] = normalizeRgb(color);
-    program.uniforms.uColor.value = new Color(r, g, b);
-    program.uniforms.uAmplitude.value = amplitude;
-    program.uniforms.uDistance.value = distance;
+  const [r, g, b] = normalizeRgb(color);
+  (program.uniforms.uColor.value as Color).set(r, g, b);
 
-    renderer.dpr = Math.min(window.devicePixelRatio || 1, dpr);
+  program.uniforms.uAmplitude.value = amplitude;
+  program.uniforms.uDistance.value = distance;
+
+  renderer.dpr = Math.min(window.devicePixelRatio || 1, dpr);
   }, [color, amplitude, distance, dpr]);
+
 
   // Start/stop loop when active changes
   useEffect(() => {
