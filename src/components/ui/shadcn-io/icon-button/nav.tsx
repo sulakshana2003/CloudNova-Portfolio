@@ -1,15 +1,12 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type NavItem = { label: string; href: string };
 
 type NavbarProps = {
-  /** Path/URL to your logo image (e.g. "/logo.png") */
+  
   logoSrc?: string;
-  /** Used to highlight the active link (match by label or href) */
   active?: string;
-  /** Override nav items if you want */
   items?: NavItem[];
-  /** CTA button */
   ctaLabel?: string;
   ctaHref?: string;
 };
