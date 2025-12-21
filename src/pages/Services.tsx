@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import Navbar from "../components/ui/shadcn-io/icon-button/nav";
 
