@@ -19,10 +19,15 @@ const ThreadsBackground: React.FC<Props> = ({ renderThreads, showThreads }) => {
       <div className="absolute inset-0 bg-white" />
       <div className="absolute inset-0 opacity-80">
         <Threads
-          color={[153, 0, 0]}
-          amplitude={3}
-          distance={0}
-          enableMouseInteraction={false}
+            active={showThreads}
+            dpr={1.25}
+            maxFps={30}
+            pauseOnScroll={false}
+            scrollResumeDelayMs={140}
+            color={[255, 0, 0]}
+            amplitude={3}
+            distance={0}
+            enableMouseInteraction={false}
         />
       </div>
     </div>

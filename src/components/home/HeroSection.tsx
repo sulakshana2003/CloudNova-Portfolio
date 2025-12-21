@@ -32,15 +32,26 @@ const HeroSection: React.FC = () => {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <button className="px-8 py-4 bg-black text-white rounded-lg font-medium hover:bg-gray-900 transition-colors shadow-lg">
-              Get Started
-            </button>
+            
             <a
-              href="#services"
-              className="px-8 py-4 bg-white text-gray-900 border border-gray-300 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-            >
-              View Services
-            </a>
+                    href="#services"
+                    className="
+                    group inline-flex items-center justify-center gap-2
+                    px-8 py-4 rounded-2xl font-semibold
+                    text-gray-900 bg-white/70
+                    border border-gray-200
+                    shadow-sm
+                    backdrop-blur
+                    transition-all duration-300
+                    hover:-translate-y-0.5 hover:shadow-lg
+                    hover:border-gray-300 hover:bg-white
+                    active:translate-y-0 active:scale-[0.99]
+                    focus:outline-none focus-visible:ring-4 focus-visible:ring-black/10
+                    "
+                >
+                    <span>View Services</span>
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
           </div>
         </div>
       </div>
