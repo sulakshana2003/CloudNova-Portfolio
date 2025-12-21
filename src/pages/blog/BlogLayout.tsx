@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, /* useSpring, */ useTransform } from "framer-motion";
 import Navbar from "../../components/ui/shadcn-io/icon-button/nav";
 import Footer from "../../components/Footer";
 
@@ -17,7 +17,7 @@ interface BlogLayoutProps {
 
 export default function BlogLayout({ children, title, date, image, category, author = "CloudNova Intelligence" }: BlogLayoutProps) {
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  //const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   
   // Subtle parallax for the image
   const y = useTransform(scrollYProgress, [0, 0.4], ["0%", "15%"]);
@@ -25,10 +25,10 @@ export default function BlogLayout({ children, title, date, image, category, aut
   return (
     <div className="min-h-screen bg-[#fafafa] selection:bg-black selection:text-white font-sans">
       {/* 1. Cinematic Progress Indicator */}
-      <motion.div
+      {/* <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 z-[100] origin-left"
         style={{ scaleX, backgroundColor: BRAND_RED }}
-      />
+      /> */}
 
       <Navbar active="Blog" />
 

@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Navbar from "../components/ui/shadcn-io/icon-button/nav";
 import Footer from "../components/Footer";
 import "./AboutUs.css";
 import type { ReactNode } from "react";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function PinIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="au-icon">

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Link } from "react-router-dom";
 import Navbar from "../components/ui/shadcn-io/icon-button/nav";
 import Footer from "../components/Footer";
@@ -48,7 +49,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 text-center">
             <h2 className="text-sm font-bold uppercase tracking-[0.2em]" style={{ color: BRAND_RED }}>Our Blog</h2>
-            <h1 className="mt-4 text-5xl md:text-6xl font-semibold font-black tracking-tighter text-slate-900">
+            <h1 className="mt-4 text-5xl md:text-6xl font-semibold  tracking-tighter text-slate-900">
               Latest Stories & <span style={{ color: BRAND_RED }}>Insights.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 leading-relaxed">
