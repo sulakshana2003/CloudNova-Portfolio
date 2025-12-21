@@ -1,15 +1,24 @@
 import "./App.css";
-import Projects from "./pages/projects.tsx";
+import {BrowserRouter, Route, Routes} from "react-router";
 
 
 
 export default function App() {
 
     return(
-        <Projects />
+        <BrowserRouter>
+                <Routes>
+
+                    <Route path="/*" element={< />} />
+                    <Route path="/login" element={< />} />
+                    <Route path="/payment" element={< />} />
+                    <Route path="/signup" element={< />} />
+                    <Route path="/forget" element={< />} />
+                    <Route path="/admin/*" element={< />} />
+
+                </Routes>
+
+        </BrowserRouter>
     )
-
-
-
 
 }
