@@ -1,4 +1,3 @@
-// Services.tsx
 import { Link } from "react-router-dom";
 import Navbar from "../components/ui/shadcn-io/icon-button/nav";
 
@@ -58,9 +57,9 @@ const Services = () => {
       {/* Hero */}
       <section className="pt-32 pb-14 px-6">
         <div className="max-w-6xl mx-auto">
-          {/* ✅ no shadow, ✅ background color rgb(254,64,54) with opacity */}
           <div className="relative overflow-hidden rounded-3xl border border-slate-200/70 bg-[rgb(254,64,54)]/10 backdrop-blur">
-            <div className="relative px-6 sm:px-10 md:px-14 py-12 md:py-16 text-center">
+            {/* ✅ padding matched with service cards */}
+            <div className="relative px-6 sm:px-8 md:px-10 py-12 md:py-16 text-center">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
                 Our Services
               </h1>
@@ -83,7 +82,7 @@ const Services = () => {
               index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
             }`}
           >
-            {/* VIDEO */}
+            {/* Video */}
             <div className="flex-1 flex justify-center">
               <div className="w-[320px] h-[250px] sm:w-[360px] sm:h-[280px] md:w-[420px] md:h-[320px]">
                 <video
@@ -95,14 +94,12 @@ const Services = () => {
                   className="w-full h-full object-contain"
                 >
                   <source src={service.videoSrc} type="video/mp4" />
-                  Your browser does not support the video tag.
                 </video>
               </div>
             </div>
 
             {/* Text Card */}
             <div className="flex-1">
-              {/* ✅ no shadow, ✅ background color rgb(254,64,54) with opacity */}
               <div className="relative rounded-3xl border border-slate-200/70 bg-[rgb(254,64,54)]/10 backdrop-blur p-7 md:p-10">
                 <div className="space-y-5">
                   <h2 className="text-3xl md:text-5xl font-semibold text-slate-900 leading-tight tracking-tight">
