@@ -62,18 +62,19 @@
 .au-heroTitle {
   margin: 0;
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--brand);
-  font-size: clamp(26px, 3.8vw, 44px);
+  font-size: clamp(22px, 3.2vw, 38px); /* smaller */
   position: relative;
 }
 
 .au-heroSub {
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   color: rgba(46, 46, 56, 0.9);
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.6;
+  font-size: 14px; /* smaller */
   position: relative;
 }
 
@@ -97,10 +98,10 @@
 }
 
 .au-sectionTitle {
-  margin: 0 0 14px;
-  font-weight: 950;
+  margin: 0 0 12px;
+  font-weight: 900;
   letter-spacing: -0.02em;
-  font-size: clamp(28px, 3.2vw, 44px);
+  font-size: clamp(24px, 2.8vw, 38px); /* smaller */
   color: #0c0c10;
 }
 
@@ -119,7 +120,7 @@
 }
 
 .au-paragraph strong {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 /* -------- Steps grid (your screenshot style) -------- */
@@ -195,15 +196,16 @@
   margin: 0;
   font-weight: 900;
   letter-spacing: -0.02em;
-  font-size: 24px;
+  font-size: 20px; /* smaller */
   color: #0c0c10;
 }
 
 .au-stepDesc {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   color: rgba(46, 46, 56, 0.92);
-  line-height: 1.75;
+  line-height: 1.7;
   font-weight: 600;
+  font-size: 14px; /* smaller */
 }
 
 /* -------- Footer / CTA -------- */
@@ -234,7 +236,7 @@
   margin: 0;
   font-weight: 950;
   letter-spacing: -0.03em;
-  font-size: clamp(28px, 3.6vw, 52px);
+  font-size: clamp(24px, 3.2vw, 44px); /* smaller */
   line-height: 1.05;
 }
 
