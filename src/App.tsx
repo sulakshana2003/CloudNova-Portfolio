@@ -1,24 +1,27 @@
-import "./App.css";
+import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router";
+import Home from "./pages/Home.tsx";
+import Projects from './pages/projects.tsx';
 
 
 
-export default function App() {
+function App() {
 
-    return(
-        <BrowserRouter>
-                <Routes>
 
-                    <Route path="/*" element={< />} />
-                    <Route path="/login" element={< />} />
-                    <Route path="/payment" element={< />} />
-                    <Route path="/signup" element={< />} />
-                    <Route path="/forget" element={< />} />
-                    <Route path="/admin/*" element={< />} />
+  return (
+      <BrowserRouter>
+           
+         
 
-                </Routes>
+          <Routes>
+              <Route path="/" element={<Home />} />
+               <Route path="/projects" element={<Projects />} />
 
-        </BrowserRouter>
-    )
 
+          </Routes>
+
+      </BrowserRouter>
+  )
 }
+
+export default App
