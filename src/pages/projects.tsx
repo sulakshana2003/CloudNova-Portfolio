@@ -40,7 +40,7 @@ const PROJECTS: Project[] = [
       "Sales dashboard insights",
       "Responsive UI",
     ],
-    href: "#buynest",
+    href: "https://buynestpvt.vercel.app/",
     images: [
       "/projects/buynest-1.png",
       "/projects/buynest-2.png",

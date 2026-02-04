@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import CloudNovaText from "../assets/logo.png";
 
 const BRAND = "rgb(254,64,54)";
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/cloudnova-5920723a2/"
                 target="_blank"
                 rel="noreferrer"
                 className="h-10 w-10 rounded-full flex items-center justify-center border bg-white
@@ -90,10 +90,10 @@ const Footer: React.FC = () => {
             <ul className="mt-4 space-y-2 text-sm text-gray-800">
               {[
                 { label: "Home", href: "#" },
-                { label: "About Us", href: "#about" },
-                { label: "Services", href: "#services" },
-                { label: "Our Approach", href: "#approach" },
-                { label: "Contact Us", href: "#contact" },
+                { label: "About Us", href: "/about" },
+                { label: "Services", href: "/services" },
+                { label: "Blog", href: "/blog" },
+              
               ].map((l) => (
                 <li key={l.label}>
                   <a href={l.href} className="hover:underline underline-offset-4">
@@ -131,13 +131,7 @@ const Footer: React.FC = () => {
             </h4>
 
             <div className="mt-4 space-y-3 text-sm text-gray-800">
-              <div className="flex items-start gap-3">
-                <MapPin size={18} style={{ color: BRAND }} className="mt-0.5" />
-                <p>
-                  Your Address Line 1 <br />
-                  City, Country
-                </p>
-              </div>
+             
 
               <div className="flex items-center gap-3">
                 <Phone size={18} style={{ color: BRAND }} />
